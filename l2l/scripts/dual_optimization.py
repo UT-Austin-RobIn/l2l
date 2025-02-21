@@ -22,8 +22,8 @@ from l2l.utils.sb3_utils import StoreRolloutBufferCallback, StoreReplayBufferCal
 DEVICE='cuda'
 
 LOG = True
-WANDB_PROJECT_NAME = 'l2l-rl'
-WANDB_ENTITY_NAME = 'ut-robin'
+WANDB_PROJECT_NAME = 'enter-project-name'
+WANDB_ENTITY_NAME = 'enter-entity-name'
 
 class DualTrainer:
 

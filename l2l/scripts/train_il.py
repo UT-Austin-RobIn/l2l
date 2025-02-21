@@ -12,8 +12,8 @@ from importlib.machinery import SourceFileLoader
 DEVICE = 'cuda'
 
 LOG = True
-WANDB_PROJECT_NAME = 'imitation'
-WANDB_ENTITY_NAME = 'ut-robin'
+WANDB_PROJECT_NAME = 'enter-project-name'
+WANDB_ENTITY_NAME = 'enter-entity-name'
 
 class Trainer:
 

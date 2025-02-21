@@ -1,4 +1,10 @@
 # L2L
+<img src="assets/training_loop.png">
+
+[Shivin Dass](https://shivindass.github.io/)<sup>1</sup>, [Jiaheng Hu](https://jiahenghu.github.io/)<sup>2</sup>, [Ben Abbatematteo](https://babbatem.github.io/)<sup>1</sup>, [Peter Stone](https://www.cs.utexas.edu/~pstone/)<sup>1,2</sup>, [Roberto Martín-Martín](https://robertomartinmartin.com/)<sup>1</sup>
+
+<sup>1</sup>The University of Texas at Austin, <sup>2</sup>Sony AI
+
 Note: The task names between the paper and codebase are slightly different. We have three simulation tasks -- **kitchen**, **walled** and **two_arm** which correspond to **cooking**, **walls** and **assembly** tasks in the paper respectively.
 
 ## Setup
@@ -36,7 +42,7 @@ Our proposed solution DISaM works in two phases,
 
 Following we provide instructions for the **walled** task but they can be appropriately modified for **kitchen** and **two_arm** tasks.
 ### Phase 1: Imitation Learning (IR)
-1. Download the [data](https://utexas.box.com/s/zui5pynnbhi4a07p1ah29vmak7v7rw69) (ex. skill_walled_oh_n200.h5) and change the data path in the [IR config]() file.
+1. Download the [data](https://utexas.box.com/s/zui5pynnbhi4a07p1ah29vmak7v7rw69) (ex. skill_walled_oh_n200.h5) and change the data path in the [IR config](https://github.com/UT-Austin-RobIn/l2l/blob/516c4fa04416746f7ea2b21e85135941de6ee554/l2l/config/il/bc_ce_walled_multi_stage_config.py#L23) file.
 2. ```
     python l2l/scripts/train_il.py \
     --config l2l/config/il/bc_ce_walled_multi_stage_config.py \
@@ -44,7 +50,7 @@ Following we provide instructions for the **walled** task but they can be approp
     ```
 
 ### Phase 2: Reinforcement Learning (IS)
-1. Change the path in the [IS config]() file to point to the trained ckpt from phase 1 or use the provided [pretrained ckpts](https://utexas.box.com/s/i92e66vwd1985xmkhnrsput0bj0xb70h) (ex. walled/weights/weights_ep15.pth).
+1. Change the path in the [IS config](https://github.com/UT-Austin-RobIn/l2l/blob/516c4fa04416746f7ea2b21e85135941de6ee554/l2l/config/dual/robosuite/skill_walled_multi_stage/walled_multi_stage_action_dual_config.py#L24) file to point to the trained ckpt from phase 1 or use the provided [pretrained ckpts](https://utexas.box.com/s/i92e66vwd1985xmkhnrsput0bj0xb70h) (ex. walled/weights/weights_ep15.pth).
 2. ```
     python l2l/scripts/dual_optimization.py \
     --config l2l/config/dual/robosuite/skill_walled_multi_stage/walled_multi_stage_action_dual_config.py \
@@ -56,4 +62,4 @@ Following we provide instructions for the **walled** task but they can be approp
 ```
 python l2l/scripts/final_eval_dual.py --env <task-name> --info_step_break 3 --ckpt path/to/IS_ckpt.zip --n_rollouts 50
 ```
-Where ```<task-name>``` is one of **kitchen**, **walled** or **two_arm** and set --ckpt to the trained RL ckpt path from phase 2 or try one of the [pretrained ckpts](https://utexas.box.com/s/jwglzicuax5rx516soe4r9psvyc05zzf) (ex. walled/disam_walled/epoch_xx/rl_model_xxxx_steps).
+Where ```<task-name>``` is one of **kitchen**, **walled** or **two_arm** and set --ckpt to the trained RL ckpt path from phase 2 or try one of the [pretrained ckpts](https://utexas.box.com/s/jwglzicuax5rx516soe4r9psvyc05zzf) (ex. disam_walled/epoch_25/weights/rl_model_537120_steps).
