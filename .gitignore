@@ -1,0 +1,8 @@
+.idea
+__pycache__
+*.egg-info
+l2l/rslts/
+l2l/scripts/runs/
+l2l/scripts/wandb/
+runs/
+wandb/

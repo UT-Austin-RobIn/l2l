@@ -1,0 +1,16 @@
+gym
+gymnasium
+h5py
+imageio
+numpy==1.26.4
+opencv-python
+scipy
+torch==2.2.1
+torchvision==0.17.1
+tqdm
+wandb
+#robosuite
+#stable_baselines3
+tensorboard
+einops
+transformers==4.41.1
